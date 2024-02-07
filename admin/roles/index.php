@@ -45,12 +45,12 @@
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                         <a href="show.php?id=<?=$id_rol;?>" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                         <a href="edit.php?id=<?=$id_rol;?>" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                                        <form action="<?=APP_URL;?>/app/controllers/roles/delete.php" onclick="preguntar(event)" method="post" id="miFormulario<?=$id_rol;?>">
+                                                        <form action="<?=APP_URL;?>/app/controllers/roles/delete.php" onclick="preguntar<?=$id_rol;?>(event)" method="post" id="miFormulario<?=$id_rol;?>">
                                                             <input type="text" name="id_rol" value="<?=$id_rol;?>" hidden>
                                                             <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
                                                         </form>
                                                         <script>
-                                                            function preguntar(event) {
+                                                            function preguntar<?=$id_rol;?>(event) {
                                                                 event.preventDefault();
                                                                 Swal.fire({
                                                                     title: "Está usted seguro?",

@@ -34,7 +34,7 @@ CREATE TABLE usuarios (
 
 -- Contraseña administrador: 12345678
 INSERT INTO usuarios  (nombres,rol_id,email,password,fyh_creacion,estado)
-VALUES  ('Pablo Morrone','1','admin@admin.com','$2y$10$0tYmdHU9uGCIxY1f90W1EuImS4NQ8axowkxL1WzLbqO2LdNa8m312','2023-12-28 20:29:10','1')
+VALUES  ('Pablo Morrone','1','admin@admin.com','$2y$10$L8FLw76xaijs3Xp5/VgNEeR..E2/Dv.dx2Il6ESSJGtSCv5qPT8OW','2023-12-28 20:29:10','1')
 
 
 
