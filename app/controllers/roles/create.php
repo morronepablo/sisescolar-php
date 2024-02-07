@@ -18,7 +18,7 @@
 
         $sentencia->bindParam('nombre_rol', $nombre_rol);
         $sentencia->bindParam('fyh_creacion', $fechaHora);
-        $sentencia->bindParam('estado', $estado_de_registro);
+        $sentencia->bindParam('estado', $estado_del_registro);
 
         try {
             if ($sentencia->execute()) {
