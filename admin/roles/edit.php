@@ -1,5 +1,6 @@
 <?php
 
+global $nombre_rol;
 $id_rol = $_GET['id'];
 
 include ('../../app/config.php');

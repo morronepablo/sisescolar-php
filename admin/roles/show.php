@@ -1,11 +1,12 @@
 <?php
 
-    $id_rol = $_GET['id'];
+global $nombre_rol;
+$id_rol = $_GET['id'];
 
-    include ('../../app/config.php');
-    include ('../../admin/layout/parte1.php');
+include ('../../app/config.php');
+include ('../../admin/layout/parte1.php');
 
-    include ('../../app/controllers/roles/datos_del_rol.php');
+include ('../../app/controllers/roles/datos_del_rol.php');
 ?>
 
 

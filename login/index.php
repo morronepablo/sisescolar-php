@@ -1,7 +1,6 @@
 <?php
-    include ('../app/config.php');
+include ('../app/config.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +22,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <center>
-        <img src="https://img.freepik.com/vector-gratis/concepto-abstracto-sistema-control-acceso_335657-3180.jpg?w=740&t=st=1707191175~exp=1707191775~hmac=80d2b28e3f8cfd553fd9eb4ad3a41545cfa78912ba98de16300157db36d41362" alt="img_login" width="150px">
-        <br><br>
+        <br>
+        <img src="https://img.freepik.com/vector-gratis/concepto-abstracto-sistema-control-acceso_335657-3180.jpg?w=740&t=st=1703808543~exp=1703809143~hmac=6740d576ffcb74ef090f90d076b9e9e2b4f5641df33d2164c8577b0e5829c127"
+             width="150px" alt=""><br><br>
     </center>
     <div class="login-logo">
-        <h3><b><?=APP_NAME;?></b></h3>
+        <h3 href=""><b><?=APP_NAME;?></b></h3>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -52,28 +52,29 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="input-group mb-3">
                     <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
                 </div>
             </form>
 
             <?php
-                session_start();
-                if(isset($_SESSION['mensaje'])) {
-                    $mensaje = $_SESSION['mensaje'];
-                    ?>
-                    <script>
-                        Swal.fire({
-                            position: "center",
-                            icon: "error",
-                            title: "<?=$mensaje;?>",
-                            showConfirmButton: false,
-                            timer: 4000
-                        });
-                    </script>
-                <?php
-                    session_destroy();
-                }
+            session_start();
+            if(isset($_SESSION['mensaje'])){
+                $mensaje = $_SESSION['mensaje'];
+                ?>
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "<?=$mensaje;?>",
+                        showConfirmButton: false,
+                        timer: 4000
+                    });
+                </script>
+            <?php
+                session_destroy();
+            }
             ?>
 
         </div>

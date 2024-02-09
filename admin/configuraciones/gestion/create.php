@@ -4,17 +4,17 @@ include ('../../../admin/layout/parte1.php');
 
 ?>
 
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <br>
     <div class="content">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <h1>Registro de nueva gestión educativa</h1>
             </div>
             <br>
             <div class="row">
+
                 <div class="col-md-6">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
@@ -30,19 +30,17 @@ include ('../../../admin/layout/parte1.php');
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Estado</label>
                                             <select name="estado" id="" class="form-control">
-                                                <option value="1" selected="selected">ACTIVO</option>
-                                                <option value="0">INACTIVO</option>
+                                                <option value="ACTIVO">ACTIVO</option>
+                                                <option value="INACTIVO">INACTIVO</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -56,9 +54,6 @@ include ('../../../admin/layout/parte1.php');
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -71,4 +66,5 @@ include ('../../../admin/layout/parte1.php');
 
 include ('../../../admin/layout/parte2.php');
 include ('../../../layout/mensajes.php');
+
 ?>

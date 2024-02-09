@@ -1,33 +1,36 @@
 <?php
+global $usuarios;
 include ('../../app/config.php');
 include ('../../admin/layout/parte1.php');
-include ('../../app/controllers/usuarios/listado_de_usuarios.php');
-?>
 
+include ('../../app/controllers/usuarios/listado_de_usuarios.php');
+
+?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <br>
     <div class="content">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <h1>Listado de usuarios</h1>
             </div>
             <br>
             <div class="row">
+
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Usuarios registrados</h3>
                             <div class="card-tools">
-                                <a href="create.php" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus-square"></i> Crear nuevo usuario</a>
+                                <a href="create.php" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Crear nuevo usuario</a>
                             </div>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                 <tr>
-                                    <th><center>Nro.</center></th>
+                                    <th><center>Nro</center></th>
                                     <th><center>Nombres del usuario</center></th>
                                     <th><center>Rol</center></th>
                                     <th><center>Email</center></th>
@@ -39,22 +42,16 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                 <tbody>
                                 <?php
                                 $contador_usuarios = 0;
-                                foreach ($usuarios as $usuario) {
+                                foreach ($usuarios as $usuario){
                                     $id_usuario = $usuario['id_usuario'];
-                                    $contador_usuarios = $contador_usuarios + 1; ?>
+                                    $contador_usuarios = $contador_usuarios +1; ?>
                                     <tr>
                                         <td style="text-align: center"><?=$contador_usuarios;?></td>
-                                        <td><?=$usuario['nombres']?></td>
-                                        <td><?=$usuario['nombre_rol']?></td>
-                                        <td><?=$usuario['email']?></td>
-                                        <td><?=$usuario['fyh_creacion']?></td>
-                                        <td>
-                                            <center>
-                                                <?php
-                                                    if($usuario['estado'] == '1') echo "Activo"; else echo "Inactivo";
-                                                ?>
-                                            </center>
-                                        </td>
+                                        <td><?=$usuario['nombres'];?></td>
+                                        <td><?=$usuario['nombre_rol'];?></td>
+                                        <td><?=$usuario['email'];?></td>
+                                        <td><?=$usuario['fyh_creacion'];?></td>
+                                        <td><?=$usuario['estado'];?></td>
                                         <td style="text-align: center">
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <a href="show.php?id=<?=$id_usuario;?>" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
@@ -67,14 +64,14 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                                     function preguntar<?=$id_usuario;?>(event) {
                                                         event.preventDefault();
                                                         Swal.fire({
-                                                            title: "Está usted seguro?",
-                                                            text: "¿Desea eliminar este registro?",
-                                                            icon: "question",
-                                                            showCancelButton: true,
-                                                            confirmButtonColor: "#a5161d",
-                                                            cancelButtonColor: "#270a0a",
-                                                            confirmButtonText: "Si, eliminar!",
-                                                            cancelButtonText: "Cancelar"
+                                                            title: 'Eliminar registro',
+                                                            text: '¿Desea eliminar este registro?',
+                                                            icon: 'question',
+                                                            showDenyButton: true,
+                                                            confirmButtonText: 'Eliminar',
+                                                            confirmButtonColor: '#a5161d',
+                                                            denyButtonColor: '#270a0a',
+                                                            denyButtonText: 'Cancelar',
                                                         }).then((result) => {
                                                             if (result.isConfirmed) {
                                                                 var form = $('#miFormulario<?=$id_usuario;?>');
@@ -106,12 +103,13 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
 
 include ('../../admin/layout/parte2.php');
 include ('../../layout/mensajes.php');
+
 ?>
 
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 4,
+            "pageLength": 5,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
@@ -131,7 +129,7 @@ include ('../../layout/mensajes.php');
                     "previous": "Anterior"
                 }
             },
-            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
                 text: 'Reportes',
@@ -141,11 +139,11 @@ include ('../../layout/mensajes.php');
                     extend: 'copy',
                 }, {
                     extend: 'pdf'
-                }, {
+                },{
                     extend: 'csv'
-                }, {
+                },{
                     extend: 'excel'
-                }, {
+                },{
                     text: 'Imprimir',
                     extend: 'print'
                 }

@@ -5,6 +5,11 @@ include ('../../../../app/config.php');
 
 $gestion = $_POST['gestion'];
 $estado = $_POST['estado'];
+if($estado=="ACTIVO"){
+    $estado = 1;
+}else{
+    $estado = 0;
+}
 
 $sentencia = $pdo->prepare('INSERT INTO gestiones
 (gestion, fyh_creacion, estado)
@@ -16,16 +21,16 @@ $sentencia->bindParam('estado',$estado);
 
 if($sentencia->execute()){
     //echo 'success';
+    echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se registró la gestión correctamente.";
+    $_SESSION['mensaje'] = "Se registro la gestión educativa correctamente";
     $_SESSION['icono'] = "success";
     header('Location:'.APP_URL."/admin/configuraciones/gestion");
+//header('Location:' .$URL.'/');
 }else{
-    //echo 'error al registrar a la base de datos';
+    echo 'error al registrar a la base de datos';
     session_start();
-    $_SESSION['mensaje'] = "Error, no se puedo registrar la gestión.";
+    $_SESSION['mensaje'] = "Error no se pudo registrar en la base datos, comuniquese con el administrador";
     $_SESSION['icono'] = "error";
-    ?>
-    <script>window.history.back();</script>
-    <?php
+    ?><script>window.history.back();</script><?php
 }

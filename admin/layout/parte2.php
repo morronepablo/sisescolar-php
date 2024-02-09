@@ -15,7 +15,7 @@
         V. 1.0.
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; <?=$ano_actual;?> <a href="https://morronepablo.com.ar/">Morrone Pablo</a>.</strong> Todos los derechos reservados.
+    <strong>Copyright &copy; <?=$ano_actual;?> <a href="https://morronepablo.com.ar">Morrone Web</a>.</strong> Todos los derechos reservados.
 </footer>
 </div>
 <!-- ./wrapper -->
@@ -40,6 +40,7 @@
 <script src="<?=APP_URL;?>/public/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?=APP_URL;?>/public/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?=APP_URL;?>/public/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 
 <!-- AdminLTE App -->
 <script src="<?=APP_URL;?>/public/dist/js/adminlte.min.js"></script>

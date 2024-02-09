@@ -1,16 +1,17 @@
 <?php
 
-global $id_config_institucion, $pdo;
-$sql_instituciones = "SELECT * FROM configuracion_instituciones WHERE id_config_institucion = '$id_config_institucion' AND estado = '1' ";
+
+global $pdo, $id_config_institucion;
+$sql_instituciones = "SELECT * FROM configuracion_instituciones WHERE id_config_institucion = '$id_config_institucion' and estado = '1' ";
 $query_instituciones = $pdo->prepare($sql_instituciones);
 $query_instituciones->execute();
 $instituciones = $query_instituciones->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($instituciones as $institucion) {
-    $nombre_institucion = $institucion['nombre_institucion'];
-    $direccion          = $institucion['direccion'];
-    $telefono           = $institucion['telefono'];
-    $celular            = $institucion['celular'];
-    $correo             = $institucion['correo'];
-    $logo               = $institucion['logo'];
+foreach ($instituciones as $institucione){
+    $nombre_institucion = $institucione['nombre_institucion'];
+    $direccion = $institucione['direccion'];
+    $telefono = $institucione['telefono'];
+    $celular = $institucione['celular'];
+    $correo = $institucione['correo'];
+    $logo = $institucione['logo'];
 }

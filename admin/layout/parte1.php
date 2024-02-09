@@ -1,20 +1,21 @@
 <?php
-    session_start();
+global $pdo;
+session_start();
 
-    if(isset($_SESSION['sesion_email'])) {
-        //echo "el usuario paso por el login";
-        $email_sesion = $_SESSION['sesion_email'];
-        $query_sesion = $pdo->prepare("SELECT * FROM usuarios WHERE email = '$email_sesion' AND estado = '1' ");
-        $query_sesion->execute();
+if(isset($_SESSION['sesion_email'])){
+   // echo "el usuarios paso por el login";
+    $email_sesion = $_SESSION['sesion_email'];
+    $query_sesion = $pdo->prepare("SELECT * FROM usuarios WHERE email = '$email_sesion' AND estado = '1' ");
+    $query_sesion->execute();
 
-        $datos_sesion_usuarios = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($datos_sesion_usuarios as $datos_sesion_usuario) {
-            $nombre_sesion_usuario = $datos_sesion_usuario['nombres'];
-        }
-    } else {
-        echo "el usuario no pasopor el login";
-        header('Location:'.APP_URL."/login");
+    $datos_sesion_usuarios = $query_sesion->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($datos_sesion_usuarios as $datos_sesion_usuario){
+       $nombre_sesion_usuario = $datos_sesion_usuario['nombres'];
     }
+}else{
+    echo "el usuario no paso por el login";
+    header('Location:'.APP_URL."/login");
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -33,14 +34,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?=APP_URL;?>/public/dist/css/adminlte.min.css">
-    <!-- Sweetalert2 -->
+
+    <!-- Sweetaler2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Icons de bootstrap -->
+
+    <!-- Iconos de bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- Datatables -->
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -59,7 +64,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-
 
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
@@ -122,23 +126,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
 
-            <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
+
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -157,6 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
+
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -212,6 +207,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
+
+
+
+
+
+
+
                     <li class="nav-item">
                         <a href="<?=APP_URL;?>/login/logout.php" class="nav-link" style="background-color: #eb2d14;color: black">
                             <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
@@ -220,6 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </a>
                     </li>
+
 
                 </ul>
             </nav>

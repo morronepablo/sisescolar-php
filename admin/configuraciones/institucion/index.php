@@ -7,36 +7,36 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
 
 ?>
 
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <br>
     <div class="content">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <h1>Listado de instituciones</h1>
             </div>
             <br>
             <div class="row">
+
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Instituciones registradas</h3>
+                            <h3 class="card-title">Instituciones registrados</h3>
                             <div class="card-tools">
-                                <a href="create.php" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus-square"></i> Crear nueva institución</a>
+                                <a href="create.php" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Crear nueva institución</a>
                             </div>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                 <tr>
-                                    <th><center>Nro.</center></th>
+                                    <th><center>Nro</center></th>
                                     <th><center>Nombres de la institución</center></th>
                                     <th><center>Logo</center></th>
                                     <th><center>Dirección</center></th>
                                     <th><center>Teléfono</center></th>
                                     <th><center>Celular</center></th>
-                                    <th><center>Correo electrónico</center></th>
+                                    <th><center>Correo electronico</center></th>
                                     <th><center>Fecha de creación</center></th>
                                     <th><center>Estado</center></th>
                                     <th><center>Acciones</center></th>
@@ -45,30 +45,32 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
                                 <tbody>
                                 <?php
                                 $contador_institucion = 0;
-                                foreach ($instituciones as $institucion) {
-                                    $id_config_institucion = $institucion['id_config_institucion'];
-                                    $contador_institucion = $contador_institucion + 1; ?>
+                                foreach ($instituciones as $institucione){
+                                    $id_config_institucion = $institucione['id_config_institucion'];
+                                    $contador_institucion = $contador_institucion +1; ?>
                                     <tr>
                                         <td style="text-align: center"><?=$contador_institucion;?></td>
-                                        <td><?=$institucion['nombre_institucion']?></td>
+                                        <td><?=$institucione['nombre_institucion'];?></td>
                                         <td>
-                                            <?php
-                                                if($institucion['logo'] != '') {
-                                            ?>
-                                                    <img src="<?=APP_URL."/public/images/configuracion/".$institucion['logo']?>" class="thumb thumbnail" width="50px">
-                                            <?php
-                                                }
-                                            ?>
+                                            <img src="<?=APP_URL."/public/images/configuracion/".$institucione['logo'];?>" width="50px" alt="">
                                         </td>
-                                        <td><?=$institucion['direccion']?></td>
-                                        <td><?=$institucion['telefono']?></td>
-                                        <td><?=$institucion['celular']?></td>
-                                        <td><?=$institucion['correo']?></td>
-                                        <td><?=$institucion['fyh_creacion']?></td>
+                                        <td><?=$institucione['direccion'];?></td>
+                                        <td><?=$institucione['telefono'];?></td>
+                                        <td><?=$institucione['celular'];?></td>
+                                        <td><?=$institucione['correo'];?></td>
+                                        <td><?=$institucione['fyh_creacion'];?></td>
                                         <td>
                                             <center>
                                                 <?php
-                                                if($institucion['estado'] == '1') echo "Activo"; else echo "Inactivo";
+                                                    if($institucione['estado'] == '1') {
+                                                ?>
+                                                        <span>ACTIVO</span>
+                                                <?php
+                                                    } else {
+                                                ?>
+                                                        <span>INACTIVO</span>
+                                                <?php
+                                                    }
                                                 ?>
                                             </center>
                                         </td>
@@ -84,14 +86,14 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
                                                     function preguntar<?=$id_config_institucion;?>(event) {
                                                         event.preventDefault();
                                                         Swal.fire({
-                                                            title: "Está usted seguro?",
-                                                            text: "¿Desea eliminar este registro?",
-                                                            icon: "question",
-                                                            showCancelButton: true,
-                                                            confirmButtonColor: "#a5161d",
-                                                            cancelButtonColor: "#270a0a",
-                                                            confirmButtonText: "Si, eliminar!",
-                                                            cancelButtonText: "Cancelar"
+                                                            title: 'Eliminar registro',
+                                                            text: '¿Desea eliminar este registro?',
+                                                            icon: 'question',
+                                                            showDenyButton: true,
+                                                            confirmButtonText: 'Eliminar',
+                                                            confirmButtonColor: '#a5161d',
+                                                            denyButtonColor: '#270a0a',
+                                                            denyButtonText: 'Cancelar',
                                                         }).then((result) => {
                                                             if (result.isConfirmed) {
                                                                 var form = $('#miFormulario<?=$id_config_institucion;?>');
@@ -123,12 +125,13 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
 
 include ('../../../admin/layout/parte2.php');
 include ('../../../layout/mensajes.php');
+
 ?>
 
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 4,
+            "pageLength": 5,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ Instituciones",
@@ -148,7 +151,7 @@ include ('../../../layout/mensajes.php');
                     "previous": "Anterior"
                 }
             },
-            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
                 text: 'Reportes',
@@ -158,11 +161,11 @@ include ('../../../layout/mensajes.php');
                     extend: 'copy',
                 }, {
                     extend: 'pdf'
-                }, {
+                },{
                     extend: 'csv'
-                }, {
+                },{
                     extend: 'excel'
-                }, {
+                },{
                     text: 'Imprimir',
                     extend: 'print'
                 }
