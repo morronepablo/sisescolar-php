@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 4/1/2024
- * Time: 20:39
- */
 
+global $pdo;
 include ('../../../app/config.php');
 
 $id_usuario = $_POST['id_usuario'];
@@ -34,7 +29,7 @@ if($password == ""){
         try{
             if($sentencia->execute()){
                 session_start();
-                $_SESSION['mensaje'] = "Se actualizó el usuarios de la manera correcta en la base de datos";
+                $_SESSION['mensaje'] = "Se actualizó el usuarios correctamente";
                 $_SESSION['icono'] = "success";
                 header('Location:'.APP_URL."/admin/usuarios");
             }else {

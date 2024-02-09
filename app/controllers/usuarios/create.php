@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 4/1/2024
- * Time: 20:39
- */
 
+global $pdo;
 include ('../../../app/config.php');
 
 $nombres = $_POST['nombres'];
@@ -32,7 +27,7 @@ VALUES ( :nombres,:rol_id,:email,:password,:fyh_creacion,:estado)');
     try{
         if($sentencia->execute()){
             session_start();
-            $_SESSION['mensaje'] = "Se registro el usuarios de la manera correcta en la base de datos";
+            $_SESSION['mensaje'] = "Se registro el usuarios correctamente";
             $_SESSION['icono'] = "success";
             header('Location:'.APP_URL."/admin/usuarios");
         }else {
