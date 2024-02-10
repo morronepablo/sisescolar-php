@@ -15,7 +15,7 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Usuario: <?=$nombres;?></h1>
+                <h1>Usuario: <?=$email;?></h1>
             </div>
             <br>
             <div class="row">
@@ -34,14 +34,8 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                                             <p><?=$nombre_rol;?></p>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="">Nombres del usuarios</label>
-                                            <p><?=$nombres;?></p>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="">Email</label>
                                             <p><?=$email;?></p>
@@ -59,7 +53,15 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                                         <div class="form-group">
                                             <label for="">Estado</label>
                                             <p>
-                                                <?php if($estado=='1') echo "ACTIVO"; else echo "INACTIVO"; ?>
+                                                <?php
+                                                if($estado == "1"){ ?>
+                                                    <button class="btn btn-success btn-sm" style="border-radius: 20px">ACTIVO</button>
+                                                    <?php
+                                                }else{ ?>
+                                                    <button class="btn btn-danger btn-sm" style="border-radius: 20px">INACTIVO</button>
+                                                    <?php
+                                                }
+                                                ?>
                                             </p>
                                         </div>
                                     </div>

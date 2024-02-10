@@ -49,16 +49,18 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                         <td><?=$nivele['gestion'];?></td>
                                         <td><?=$nivele['nivel'];?></td>
                                         <td><?=$nivele['turno'];?></td>
-                                        <td style="text-align: center">
-                                            <?php
-                                            if($nivele['estado'] == "1"){ ?>
-                                                <button class="btn btn-success btn-sm" style="border-radius: 20px">ACTIVO</button>
+                                        <td>
+                                            <center>
                                                 <?php
-                                            }else{ ?>
-                                                <button class="btn btn-danger btn-sm" style="border-radius: 20px">INACTIVO</button>
-                                                <?php
-                                            }
-                                            ?>
+                                                if($nivele['estado'] == "1"){ ?>
+                                                    <button class="btn btn-success btn-sm" style="border-radius: 20px">ACTIVO</button>
+                                                    <?php
+                                                }else{ ?>
+                                                    <button class="btn btn-danger btn-sm" style="border-radius: 20px">INACTIVO</button>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </center>
                                         </td>
                                         <td style="text-align: center">
                                             <div class="btn-group" role="group" aria-label="Basic example">

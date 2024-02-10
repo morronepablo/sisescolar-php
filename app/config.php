@@ -19,7 +19,7 @@ try{
     echo "error no se pudo conectar a la base de datos";
 }
 
-date_default_timezone_set("America/Caracas");
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 $fechaHora = date('Y-m-d H:i:s');
 
 $fecha_actual = date('Y-m-d');
